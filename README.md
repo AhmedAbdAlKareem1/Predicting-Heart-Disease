@@ -1,67 +1,98 @@
-❤️ Heart Disease Prediction using XGBoost
-📖 Overview
+# ❤️ Heart Disease Prediction using XGBoost
 
-This project implements a binary classification model to predict the presence of heart disease using XGBoost.
+## 📖 Overview
 
-The workflow includes feature engineering, hyperparameter tuning, and robust cross-validation using Out-of-Fold (OOF) evaluation to ensure reliable and unbiased model performance.
+This project implements a binary classification model to predict the presence of heart disease using **XGBoost**.
 
-🧠 Model Approach
+The workflow includes:
 
-XGBoost (Gradient Boosted Decision Trees)
+- Feature engineering
+- Hyperparameter tuning
+- Stratified K-Fold cross-validation
+- Out-of-Fold (OOF) evaluation
 
-Stratified K-Fold Cross Validation (5 folds)
+The objective is to build a reliable and reproducible machine learning pipeline for structured medical data.
 
-Out-of-Fold (OOF) predictions for unbiased evaluation
+---
 
-Hyperparameter tuning using RandomizedSearchCV
+## 🧠 Model Approach
 
-Performance evaluated using ROC-AUC and PR-AUC
+- **XGBoost** (Gradient Boosted Decision Trees)
+- **Stratified K-Fold Cross Validation (5 folds)**
+- **Out-of-Fold (OOF) predictions** for unbiased evaluation
+- **Hyperparameter tuning** using `RandomizedSearchCV`
+- Evaluation using **ROC-AUC** and **PR-AUC**
 
-⚙️ Feature Engineering
+---
+
+## ⚙️ Feature Engineering
 
 The following domain-inspired features were created:
 
-Cardiac_Workload = Max HR × Age
+- `Cardiac_Workload = Max HR × Age`
+- `Stress_Factor = ST depression × Slope of ST`
+- `Chol_Age_Ratio = Cholesterol / Age`
+- Binary risk indicators:
+  - `HighBP`
+  - `HighCholesterol`
+- Combined total risk factor count
 
-Stress_Factor = ST depression × Slope of ST
+Numeric data types were downcast to improve memory efficiency.
 
-Chol_Age_Ratio = Cholesterol / Age
+---
 
-Binary risk indicators:
+## 📊 Evaluation Results
 
-HighBP
-
-HighCholesterol
-
-Combined total risk factor count
-
-Numeric data types were downcast to reduce memory usage and improve efficiency.
-
-📊 Evaluation Results
-Metric	Score
-OOF ROC-AUC	~0.955
-PR-AUC	~0.948
-Accuracy (threshold = 0.40)	~0.886
+| Metric | Score |
+|--------|--------|
+| OOF ROC-AUC | ~0.955 |
+| PR-AUC | ~0.948 |
+| Accuracy (threshold = 0.40) | ~0.886 |
 
 The model demonstrates strong class discrimination and stable cross-validation performance.
 
-🔁 Validation Strategy
+---
+
+## 🔁 Validation Strategy
 
 To ensure robust generalization:
 
-Stratified K-Fold (5 folds)
+- Stratified K-Fold (5 folds)
+- Out-of-Fold predictions used for global ROC-AUC
+- No data leakage between folds
+- Final model trained on the full dataset after validation
 
-Out-of-Fold predictions used for global ROC-AUC
+---
 
-No data leakage between folds
+## 📂 Project Structure
 
-Final model trained on full dataset after validation
 
-📦 Installation
-🔹 Using pip (Recommended)
+Predicting-Heart-Disease/
+│
+├── DataSet/
+│ ├── train.csv
+│ └── test.csv
+│
+├── Model/
+│ ├── Model.py
+│ └── randomizedsearchcv_.py
+│
+├── jypter NoteBook/
+│ └── NoteBook File.ipynb
+│
+├── plots/
+│
+├── submission.csv
+└── README.md
 
-Install dependencies:
 
+---
+
+## 📦 Installation
+
+### 🔹 Using pip (Recommended)
+
+```bash
 pip install -r requirements.txt
 
 Or manually:
@@ -86,3 +117,21 @@ The dataset is not included in this repository.
 Results may vary depending on dataset version and random seed.
 
 This project follows a reproducible machine learning pipeline structure.
+
+📜 License
+
+This project is open-source and available under the MIT License.
+
+
+---
+
+# 🎯 What Changed
+
+- Fixed Markdown formatting
+- Proper headers
+- Proper code blocks
+- Clean spacing
+- Professional structure
+- Removed extra meta text
+
+---
