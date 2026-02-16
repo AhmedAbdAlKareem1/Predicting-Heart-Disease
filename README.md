@@ -47,7 +47,7 @@ Numeric data types were downcast to improve memory efficiency.
 |--------|--------|
 | OOF ROC-AUC | ~0.955 |
 | PR-AUC | ~0.948 |
-| Accuracy (threshold = 0.40) | ~0.886 |
+| accuracy| ~0.9536 |
 
 The model demonstrates strong class discrimination and stable cross-validation performance.
 
